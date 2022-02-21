@@ -165,6 +165,13 @@ open class ImageSlideshow: UIView {
         }
     }
 
+    /// isFullScreenSlideShow handle fullscreen
+    open var isFullScreenSlideShow = false {
+        didSet {
+            reloadScrollView()
+        }
+    }
+
     /// Enables/disables user interactions
     open var draggingEnabled = true {
         didSet {
@@ -323,7 +330,7 @@ open class ImageSlideshow: UIView {
 
         var i = 0
         for image in scrollViewImages {
-            let item = ImageSlideshowItem(image: image, zoomEnabled: zoomEnabled, activityIndicator: activityIndicator?.create(), maximumScale: maximumScale)
+            let item = ImageSlideshowItem(image: image, zoomEnabled: zoomEnabled, activityIndicator: activityIndicator?.create(), maximumScale: maximumScale, isFullScreenSlideShow: isFullScreenSlideShow)
             item.imageView.contentMode = contentScaleMode
             slideshowItems.append(item)
             scrollView.addSubview(item)
